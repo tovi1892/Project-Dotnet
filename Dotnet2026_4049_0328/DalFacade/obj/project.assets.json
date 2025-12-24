@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\1\\תוכניות\\OneDrive\\מסמכים\\GitHub\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj",
+      "projectUniqueName": "C:\\Users\\1\\Documents\\GitHub\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj",
       "projectName": "DalFacade",
-      "projectPath": "C:\\Users\\1\\תוכניות\\OneDrive\\מסמכים\\GitHub\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj",
+      "projectPath": "C:\\Users\\1\\Documents\\GitHub\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj",
       "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\1\\תוכניות\\OneDrive\\מסמכים\\GitHub\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\obj\\",
+      "outputPath": "C:\\Users\\1\\Documents\\GitHub\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,7 +51,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -72,7 +73,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
