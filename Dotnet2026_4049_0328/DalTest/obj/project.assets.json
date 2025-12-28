@@ -47,44 +47,42 @@
   },
   "packageFolders": {
     "C:\\Users\\huser\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Z:\\יד תשפו\\רבינוביץ שרה\\C#\\פרויקט C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
+      "projectUniqueName": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
       "projectName": "DalTest",
-      "projectPath": "Z:\\יד תשפו\\רבינוביץ שרה\\C#\\פרויקט C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
+      "projectPath": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
       "packagesPath": "C:\\Users\\huser\\.nuget\\packages\\",
-      "outputPath": "Z:\\יד תשפו\\רבינוביץ שרה\\C#\\פרויקט C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\obj\\",
+      "outputPath": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\huser\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "Z:\\יד תשפו\\רבינוביץ שרה\\C#\\פרויקט C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj": {
-              "projectPath": "Z:\\יד תשפו\\רבינוביץ שרה\\C#\\פרויקט C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj"
+            "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj": {
+              "projectPath": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj"
             },
-            "Z:\\יד תשפו\\רבינוביץ שרה\\C#\\פרויקט C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalList\\DalList.csproj": {
-              "projectPath": "Z:\\יד תשפו\\רבינוביץ שרה\\C#\\פרויקט C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalList\\DalList.csproj"
+            "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalList\\DalList.csproj": {
+              "projectPath": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalList\\DalList.csproj"
             }
           }
         }
@@ -93,7 +91,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -104,11 +108,17 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
