@@ -1,20 +1,29 @@
 ﻿
 
-namespace DalList//Dal?
+namespace Dal;
+
+static internal class DataSource
 {
-    static internal class DataSource
+    static internal List<DO.Customer?> customers = new  ();
+    static internal List<DO.Product?> products = new ();
+    static internal List<DO.Sale?> sales = new ();
+
+
+    internal class Config
     {
-        static internal List<Customer?> customers = new  ();
-        static internal List<Product?> products = new ();
-        static internal List<Sale?> sales = new ();
+        internal const int minProductId=100;
+        internal const int minCustomerId = 100;
+        internal const int minSaleId = 100;
 
-
-        internal class Config
-        {
-            internal const int minProduct=100;
-        }
-
-
-
+        internal static int nextProductId=100;
+        internal static  int nextCustomerId =100;
+        internal static  int nextSaleId = 100; 
+        
+        int ProductId => ++nextProductId;
+        int CustomerId => ++nextCustomerId;
+        int SaleId => ++nextSaleId;
     }
+
+
+
 }

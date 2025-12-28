@@ -52,11 +52,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
+      "projectUniqueName": "Z:\\יד תשפו\\כהן טובה\\C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
       "projectName": "DalTest",
-      "projectPath": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
+      "projectPath": "Z:\\יד תשפו\\כהן טובה\\C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
       "packagesPath": "C:\\Users\\huser\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\obj\\",
+      "outputPath": "Z:\\יד תשפו\\כהן טובה\\C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -78,11 +78,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj": {
-              "projectPath": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj"
+            "Z:\\יד תשפו\\כהן טובה\\C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj": {
+              "projectPath": "Z:\\יד תשפו\\כהן טובה\\C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalFacade\\DalFacade.csproj"
             },
-            "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalList\\DalList.csproj": {
-              "projectPath": "C:\\Users\\huser\\Source\\Repos\\Project-Dotnet\\Dotnet2026_4049_0328\\DalList\\DalList.csproj"
+            "Z:\\יד תשפו\\כהן טובה\\C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalList\\DalList.csproj": {
+              "projectPath": "Z:\\יד תשפו\\כהן טובה\\C#\\Project-Dotnet\\Dotnet2026_4049_0328\\DalList\\DalList.csproj"
             }
           }
         }

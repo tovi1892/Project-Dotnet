@@ -1,8 +1,7 @@
 ﻿
+using DO;
+namespace DalApi;
 
-namespace NewFolder
+public interface ISale : ICrudcs<Sale>
 {
-   public interface ISale:ICrudcs<Sale>
-    {
-    }
 }

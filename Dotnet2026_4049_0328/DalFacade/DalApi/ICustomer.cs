@@ -1,8 +1,9 @@
 ﻿
 
-namespace NewFolder
+using DO;
+
+namespace DalApi;
+
+public interface ICustomer : ICrudcs<Customer>
 {
-   public interface ICustomer:ICrudcs<Customer>
-    {
-    }
 }
