@@ -1,0 +1,13 @@
+﻿
+
+namespace DalApi
+{
+    interface ICrudcs<T>
+    {
+        int Creat(T item);
+        T? Read(int id);
+        List<T> ReadAll();
+        void Update(T item);
+        void Delete(int id);
+    }
+}

@@ -4,5 +4,12 @@
   "success": true,
   "projectFilePath": "C:\\Users\\1\\Documents\\GitHub\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\DalTest.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\1\\Documents\\GitHub\\Project-Dotnet\\Dotnet2026_4049_0328\\DalTest\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

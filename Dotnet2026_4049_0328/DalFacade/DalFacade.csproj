@@ -4,7 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <RootNamespace></RootNamespace>
+
+	  <BaseOutputPath>$(SolutionDir)\bin\</BaseOutputPath>
+	  <OutputPath>$(SolutionDir)\bin\</OutputPath>
+	  <AppendTargetFrameWorkToOutputPath>false</AppendTargetFrameWorkToOutputPath>
+	  <AppendRunTimeIdentifierToOutputPath>false</AppendRunTimeIdentifierToOutputPath>
+	  <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+	  <RootNamespace/>
   </PropertyGroup>
 
 </Project>
