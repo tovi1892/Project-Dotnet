@@ -7,3 +7,4 @@ namespace DalApi;
 public interface ICustomer : ICrudcs<Customer>
 {
 }
+

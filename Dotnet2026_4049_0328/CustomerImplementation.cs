@@ -1,4 +1,3 @@
-ï»¿
 using DO;
 using DalApi;
 
@@ -8,9 +7,9 @@ internal class CustomerImplementation : ICustomer
 {
     public int Creat(Customer item)
     {
-        // ×‘×“×™×§×” ×× ×œ×§×•×— ×¢× ××•×ª×• ×ž×–×”×” ×›×‘×¨ ×§×™×™×
+        // áãé÷ä àí ì÷åç òí àåúå îæää ëáø ÷ééí
         if (DataSource.Customers.Any(c => c.CustomerId == item.CustomerId))
-            throw new isNotFound($"Customer with ID {item.CustomerId} already exists.");
+            throw new DalListException($"Customer with ID {item.CustomerId} already exists.");
 
         DataSource.Customers.Add(item);
         return item.CustomerId;
@@ -25,15 +24,14 @@ internal class CustomerImplementation : ICustomer
         DataSource.Customers.Remove(customer);
     }
 
-    public Customer? Read(Predicate<Customer> match)
+    public Customer? Read(int id)
     {
-        var customer = DataSource.Customers.Find(match);
+        var customer = DataSource.Customers.FirstOrDefault(c => c.CustomerId == id);
         if (customer == null)
-            throw new DalTestException("Customer not found by predicate.");
+            throw new DalListException($"Customer with ID {id} not found.");
 
         return customer;
     }
-
 
     public List<Customer> ReadAll()
     {

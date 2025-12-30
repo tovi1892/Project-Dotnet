@@ -8,6 +8,8 @@ static internal class DataSource
     static internal List<DO.Product?> products = new ();
     static internal List<DO.Sale?> sales = new ();
 
+    public static object Sales { get; internal set; }
+    public static object Products { get; internal set; }
 
     internal class Config
     {
@@ -23,6 +25,8 @@ static internal class DataSource
         int CustomerId => ++nextCustomerId;
         int SaleId => ++nextSaleId;
     }
+
+ 
 
 
 

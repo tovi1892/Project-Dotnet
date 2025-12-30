@@ -5,28 +5,65 @@ namespace Dal;
 
 internal class ProductImplementation : IProduct
 {
-    public int Creat(Product item)
+    public int Creat(int ProductId,
+    String ProductName,
+    Categories Category,
+    int QuantityInStock,
+    double Price)
     {
-        throw new NotImplementedException();
+        Product item = new Product()
+        {
+            ProductId = ProductId,
+            ProductName = ProductName,
+            Category = Category,
+            QuantityInStock = QuantityInStock,
+            Price = Price
+        };
+        DataSource.Products.Add(item);
+        //if (DataSource.Products.Any(p => p.ProductId == item.ProductId))
+        //    throw new DalListException($"Product with ID {item.ProductId} already exists.");
+
+        //DataSource.Products.Add(item);
+        //return item.ProductId;
+
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        foreach (var product in DataSource.Products)
+        {
+            if (product.ProductId == id)
+            {
+                DataSource.Products.Remove(product);
+                return;
+            }
+        }
+
+
     }
 
     public Product? Read(int id)
     {
-        throw new NotImplementedException();
+        var product = DataSource.Products.FirstOrDefault(p => p.ProductId == id);
+        if (product == null)
+            throw new DalListException($"Product with ID {id} not found.");
+
+        return product;
     }
 
     public List<Product> ReadAll()
     {
-        throw new NotImplementedException();
+        return DataSource.Products.ToList();
     }
 
     public void Update(Product item)
     {
-        throw new NotImplementedException();
+        var product = DataSource.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
+        if (product == null)
+            throw new DalListException($"Product with ID {item.ProductId} not found.");
+
+        product.ProductName = item.ProductName;
+        product.Price = item.Price;
+        product.Stock = item.Stock;
     }
 }
