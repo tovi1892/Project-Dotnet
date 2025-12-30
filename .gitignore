@@ -3,8 +3,8 @@ bin/
 obj/
 
 *.suo
+*.user
 *.cache
 *.dtbcache.v2
-*.user
-*.bin
+
 DocumentLayout.json
