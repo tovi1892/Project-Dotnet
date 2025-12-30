@@ -1,0 +1,16 @@
+# Visual Studio
+.vs/
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.cache
+*.db
+
+# VS indexing files
+*.vsidx
+*.bin
