@@ -5,7 +5,7 @@ namespace Dal;
 
 internal class ProductImplementation : IProduct
 {
-    public int Creat(int ProductId,
+    public int Create(int ProductId,
     String ProductName,
     Categories Category,
     int QuantityInStock,
