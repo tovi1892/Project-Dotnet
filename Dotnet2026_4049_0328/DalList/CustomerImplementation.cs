@@ -1,53 +1,56 @@
 ﻿
-using DO;
 using DalApi;
+using DO;
 
-namespace Dal;
-
-internal class CustomerImplementation : ICustomer
+internal class ImplementationCustomer : ICustomer
 {
-    public int Creat(Customer item)
-    {
-        // בדיקה אם לקוח עם אותו מזהה כבר קיים
-        if (DataSource.Customers.Any(c => c.CustomerId == item.CustomerId))
-            throw new isNotFound($"Customer with ID {item.CustomerId} already exists.");
 
-        DataSource.Customers.Add(item);
-        return item.CustomerId;
+    public int Create(Customer customer)
+    {
+        int itemIndex = Customers.FindIndex(p => p?.CustomerId == customer.CustomerId);
+        if (itemIndex != -1)
+        {
+            throw new CustomerApperException("customer apper");
+        }
+        Customers.Add(customer);
+        return customer.CustomerId;
+    }
+    public Customer? Read(int id)
+    {
+        int itemIndex = Customers.FindIndex(p => p?.CustomerId == id);
+        if (itemIndex == -1)
+        {
+            throw new ItemNotFoundException("customer not found");
+        }
+        return Customers[itemIndex];
     }
 
-    public void Delete(int id)
-    {
-        var customer = DataSource.Customers.FirstOrDefault(c => c.CustomerId == id);
-        if (customer == null)
-            throw new DalListException($"Customer with ID {id} not found.");
-
-        DataSource.Customers.Remove(customer);
-    }
-
-    public Customer? Read(Predicate<Customer> match)
-    {
-        var customer = DataSource.Customers.Find(match);
-        if (customer == null)
-            throw new DalTestException("Customer not found by predicate.");
-
-        return customer;
-    }
 
 
     public List<Customer> ReadAll()
     {
-        return DataSource.Customers.ToList();
+        return Customers;
     }
-
     public void Update(Customer item)
     {
-        var customer = DataSource.Customers.FirstOrDefault(c => c.CustomerId == item.CustomerId);
-        if (customer == null)
-            throw new DalListException($"Customer with ID {item.CustomerId} not found.");
+        int itemIndex = Customers.FindIndex(p => p?.CustomerId == item.CustomerId);
+        if (itemIndex == -1)
+        {
+            throw new ItemNotFoundException("customer not found");
+        }
+        Customers[itemIndex] = item;
 
-        customer.CustomerName = item.CustomerName;
-        customer.CustomerAddress = item.CustomerAddress;
-        customer.CustomerPhone = item.CustomerPhone;
     }
+
+    public void Delete(int id)
+    {
+        int itemIndex = Customers.FindIndex(p => p?.CustomerId == id);
+        if (itemIndex == -1)
+        {
+            throw new ItemNotFoundException("customer not found");
+        }
+        Customers.RemoveAt(itemIndex);
+    }
+
 }
+

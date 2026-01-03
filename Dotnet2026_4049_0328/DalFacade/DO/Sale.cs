@@ -8,7 +8,7 @@ namespace DO;
 
 public record Sale(
     int SaleId,
-int ProductId,
+    int ProductId,
     int QuantityToSale,
     int TotalPrice,
     bool IsClube,

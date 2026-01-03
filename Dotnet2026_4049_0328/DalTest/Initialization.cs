@@ -1,33 +1,28 @@
-﻿
-
-
+﻿using DalApi;
 using DO;
-using DalApi;
-using DalList;
 namespace DalTest;
 
 public static class Initialization
 {
-    static Sale s_dalSale;
-    static Product s_dalProduct;
-    static Customer s_dalCustomer;
-    public static void  createSale()
+    private static IDal? s_dal;
+    public static void Initialize(IDal dal)
     {
-        s_dalSale = new Sale();
-       
-       
+        s_dal = dal;
+        CreateCustomers();
+        CreateProducts();
+        CreateSales();
     }
-    public static void createProduct()
+    private static void CreateSales()
     {
-        s_dalProduct = new Product();
-        //s_dalProduct.pr
+        s_dal.Sale.Create(new Sale(1, 1, 1, 1, true, DateTime.Now, DateTime.Now.AddMonths(1)));
 
-
-
-    } 
-    public static void createCustomer() {
-        s_dalCustomer = new Customer();
+    }
+    private static void CreateProducts()
+    {
+        s_dal.Product.Create(new Product(1, "k", Categories.Bracelets, 1, 1));
+    }
+    private static void CreateCustomers()
+    {
+        s_dal.Customer.Create(new Customer(2, "ttt", "cccc", "123123"));
     }
 }
-
-

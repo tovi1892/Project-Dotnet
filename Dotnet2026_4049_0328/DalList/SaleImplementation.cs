@@ -1,5 +1,6 @@
 ﻿using DO;
 using DalApi;
+using static Dal.DataSource;
 
 namespace Dal;
 
@@ -7,20 +8,25 @@ internal class SaleImplementation : ISale
 {
     public int Creat(Sale item)
     {
-        if (DataSource.Sales.Any(s => s.SaleId == item.SaleId))
-            throw new DalListException($"Sale with ID {item.SaleId} already exists.");
 
-        DataSource.Sales.Add(item);
+
+        Sale s = item with { SaleId = Config.GetNextProductId() };
+
+
+        //if (DataSource.Sales.Any(s => s.SaleId == item.SaleId))
+        //    throw new DalListException($"Sale with ID {item.SaleId} already exists.");
+
+        Sales.Add(s);
         return item.SaleId;
     }
 
     public void Delete(int id)
     {
-        var sale = DataSource.Sales.FirstOrDefault(s => s.SaleId == id);
+        var sale = Sales.FirstOrDefault(s => s.SaleId == id);
         if (sale == null)
             throw new DalListException($"Sale with ID {id} not found.");
 
-        DataSource.Sales.Remove(sale);
+        Sales.Remove(sale);
     }
 
     public Sale? Read(int id)
@@ -34,15 +40,12 @@ internal class SaleImplementation : ISale
 
     public List<Sale> ReadAll()
     {
-        return DataSource.Sales.ToList();
+        return Sales.ToList();
     }
 
     public void Update(Sale item)
     {
-        var sale = DataSource.Sales.FirstOrDefault(s => s.SaleId == item.SaleId);
-        if (sale == null)
-            throw new DalListException($"Sale with ID {item.SaleId} not found.");
-
+        Sale sale = Sales.FirstOrDefault(s => s.SaleId == item.SaleId) ?? throw new DalListException($"Sale with ID {item.SaleId} not found.");
         sale.ProductId = item.ProductId;
         sale.CustomerId = item.CustomerId;
         sale.Quantity = item.Quantity;

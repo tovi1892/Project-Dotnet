@@ -1,50 +1,38 @@
 ﻿using DO;
 using DalApi;
+using static Dal.DataSource;
 
 namespace Dal;
 
 internal class ProductImplementation : IProduct
 {
-    public int Create(int ProductId,
-    String ProductName,
-    Categories Category,
-    int QuantityInStock,
-    double Price)
+    public int Create(Product product)
     {
-        Product item = new Product()
-        {
-            ProductId = ProductId,
-            ProductName = ProductName,
-            Category = Category,
-            QuantityInStock = QuantityInStock,
-            Price = Price
-        };
-        DataSource.Products.Add(item);
+           
+      Product p = product with { ProductId = Config.GetNextProductId() };
         //if (DataSource.Products.Any(p => p.ProductId == item.ProductId))
         //    throw new DalListException($"Product with ID {item.ProductId} already exists.");
 
         //DataSource.Products.Add(item);
-        //return item.ProductId;
+        Products.Add(p);
+        return p.ProductId;
+    
+   
 
     }
 
     public void Delete(int id)
     {
-        foreach (var product in DataSource.Products)
-        {
-            if (product.ProductId == id)
-            {
-                DataSource.Products.Remove(product);
-                return;
-            }
-        }
+        var product = Products.FirstOrDefault(s => s.ProductId == id);
+        if (product == null)
+            throw new DalListException($"Sale with ID {id} not found.");
 
-
+        Products.Remove(product);
     }
 
     public Product? Read(int id)
     {
-        var product = DataSource.Products.FirstOrDefault(p => p.ProductId == id);
+        var product = Products.FirstOrDefault(p => p.ProductId == id);
         if (product == null)
             throw new DalListException($"Product with ID {id} not found.");
 
@@ -53,17 +41,17 @@ internal class ProductImplementation : IProduct
 
     public List<Product> ReadAll()
     {
-        return DataSource.Products.ToList();
+        return Products.ToList();
     }
 
     public void Update(Product item)
     {
-        var product = DataSource.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
+        Product product = Products.FirstOrDefault(p => p.ProductId == item.ProductId);
         if (product == null)
             throw new DalListException($"Product with ID {item.ProductId} not found.");
 
         product.ProductName = item.ProductName;
         product.Price = item.Price;
-        product.Stock = item.Stock;
+        product.QuantityInStock = item.QuantityInStock;
     }
 }
