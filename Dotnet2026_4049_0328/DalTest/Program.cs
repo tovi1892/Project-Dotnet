@@ -72,19 +72,19 @@ class Program
                 case 1: Create(entity); break;
                 case 2:
                     if (entity == "Customer") Read();
-                    else if (entity == "Product") Read(s_dal.product);
-                    else if (entity == "Sale") Read(s_dal.sale);
+                    else if (entity == "Product") Read(s_dal.Product);
+                    else if (entity == "Sale") Read(s_dal.Sale);
                     break;
                 case 3:
-                    if (entity == "Customer") ReadAll(s_dal.customer);
-                    else if (entity == "Product") ReadAll(s_dal.product);
-                    else if (entity == "Sale") ReadAll(s_dal.sale);
+                    if (entity == "Customer") ReadAll(s_dal.Customer);
+                    else if (entity == "Product") ReadAll(s_dal.Product);
+                    else if (entity == "Sale") ReadAll(s_dal.Sale);
                     break;
                 case 4: Update(entity); break;
                 case 5:
-                    if (entity == "Customer") Delete(s_dal.customer);
-                    else if (entity == "Product") Delete(s_dal.product);
-                    else if (entity == "Sale") Delete(s_dal.sale);
+                    if (entity == "Customer") Delete(s_dal.Customer);
+                    else if (entity == "Product") Delete(s_dal.Product);
+                    else if (entity == "Sale") Delete(s_dal.Sale);
                     break;
                 case 6: back = true; break;
                 default: Console.WriteLine("Unknown choice."); break;
