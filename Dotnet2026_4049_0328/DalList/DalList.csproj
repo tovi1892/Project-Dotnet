@@ -1,13 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DalFacade\DalFacade.csproj" />
-  </ItemGroup>
+		<BaseOutputPath>$(SolutionDir)\bin\</BaseOutputPath>
+		<OutputPath>$(SolutionDir)\bin\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+		<RootNamespace>Dal</RootNamespace>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\DalFacade\DalFacade.csproj" />
+	</ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@ namespace DO;
 
 public record Product(
     int ProductId,
-    String ProductName,
+    string ProductName,
     Categories Category,
     int QuantityInStock,
     double Price

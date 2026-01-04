@@ -13,9 +13,6 @@ internal class SaleImplementation : ISale
         Sale s = item with { SaleId = Config.GetNextProductId() };
 
 
-        //if (DataSource.Sales.Any(s => s.SaleId == item.SaleId))
-        //    throw new DalListException($"Sale with ID {item.SaleId} already exists.");
-
         Sales.Add(s);
         return item.SaleId;
     }
@@ -45,7 +42,13 @@ internal class SaleImplementation : ISale
 
     public void Update(Sale item)
     {
-        Sale sale = Sales.FirstOrDefault(s => s.SaleId == item.SaleId) ?? throw new ($"Sale with ID {item.SaleId} not found.");
-      
+
+        int itemIndex = Sales.FindIndex(p => p?.SaleId == item.SaleId);
+        if (itemIndex == -1)
+        {
+            throw new ItemNotFoundException("item not found");
+
+        }
+        Sales[itemIndex] = item;
     }
 }

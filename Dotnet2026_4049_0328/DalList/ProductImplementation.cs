@@ -10,10 +10,9 @@ internal class ProductImplementation : IProduct
     {
            
       Product p = item with { ProductId = Config.GetNextProductId() };
-        //if (DataSource.Products.Any(p => p.ProductId == item.ProductId))
-        //    throw new DalListException($"Product with ID {item.ProductId} already exists.");
+        if (DataSource.Products.Any(p => p.ProductId == item.ProductId))
+            throw new ItemApperException($"Product with ID {item.ProductId} already exists.");
 
-        //DataSource.Products.Add(item);
         Products.Add(p);
         return p.ProductId;
     
@@ -25,7 +24,7 @@ internal class ProductImplementation : IProduct
     {
         var product = Products.FirstOrDefault(s => s.ProductId == id);
         if (product == null)
-            throw new DalListException($"Sale with ID {id} not found.");
+            throw new ItemNotFoundException($"Sale with ID {id} not found.");
 
         Products.Remove(product);
     }
@@ -33,8 +32,7 @@ internal class ProductImplementation : IProduct
     public Product? Read(int id)
     {
         var product = Products.FirstOrDefault(p => p.ProductId == id);
-        if (product == null)
-            throw new DalListException($"Product with ID {id} not found.");
+      
 
         return product;
     }
@@ -46,12 +44,14 @@ internal class ProductImplementation : IProduct
 
     public void Update(Product item)
     {
-        Product product = Products.FirstOrDefault(p => p.ProductId == item.ProductId);
-        if (product == null)
-            throw new DalListException($"Product with ID {item.ProductId} not found.");
 
-        product.ProductName = item.ProductName;
-        product.Price = item.Price;
-        product.QuantityInStock = item.QuantityInStock;
+        int itemIndex = Products.FindIndex(p => p?.ProductId == item.ProductId);
+        if (itemIndex == -1)
+        {
+            throw new ItemNotFoundException("item not found");
+
+        }
+        Products[itemIndex] = item;
+
     }
 }

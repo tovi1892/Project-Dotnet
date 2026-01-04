@@ -3,7 +3,7 @@ using DO;
 namespace DalApi;
 
 
-public interface IProduct : ICrudcs<Product>
+public interface IProduct : ICrud<Product>
 {
 
 }

@@ -3,12 +3,12 @@
 namespace DO;
 
 public record Customer(
-    string CustomerId,
-    String CustomerName,
-    String CustomerAddress,
-    String CustomerPhone)
+    int CustomerId,
+    string CustomerName,
+    string CustomerAddress,
+    string CustomerPhone)
 {
-    public Customer() : this("","","","0555555555")
+    public Customer() : this(1,"","","0555555555")
     {
 
     }

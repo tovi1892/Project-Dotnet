@@ -1,17 +1,19 @@
 ﻿
 using DalApi;
 using DO;
-using DalList;
+ 
+using static Dal.DataSource;
+namespace Dal;
 
-internal class ImplementationCustomer : ICustomer
+internal class CustomerImplementation : ICustomer
 {
 
     public int Create(Customer customer)
     {
-        int itemIndex = customers.FindIndex(p => p?.CustomerId == customer.CustomerId);
+        int itemIndex = Customers.FindIndex(p => p?.CustomerId == customer.CustomerId);
         if (itemIndex != -1)
         {
-            throw new CustomerApperException("customer apper");
+            throw new ItemApperException("customer apper");
         }
         Customers.Add(customer);
         return customer.CustomerId;
@@ -19,10 +21,7 @@ internal class ImplementationCustomer : ICustomer
     public Customer? Read(int id)
     {
         int itemIndex = Customers.FindIndex(p => p?.CustomerId == id);
-        if (itemIndex == -1)
-        {
-            throw new ItemNotFoundException("customer not found");
-        }
+       
         return Customers[itemIndex];
     }
 

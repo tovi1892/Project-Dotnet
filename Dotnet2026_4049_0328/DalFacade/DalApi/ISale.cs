@@ -2,6 +2,6 @@
 using DO;
 namespace DalApi;
 
-public interface ISale : ICrudcs<Sale>
+public interface ISale : ICrud<Sale>
 {
 }
