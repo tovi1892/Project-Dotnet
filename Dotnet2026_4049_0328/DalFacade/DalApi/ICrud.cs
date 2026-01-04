@@ -4,7 +4,7 @@ namespace DalApi;
 
 interface ICrudcs<T>
 {
-    int Creat(T item);
+    int Create(T item);
     T? Read(int id);
     List<T> ReadAll();
     void Update(T item);

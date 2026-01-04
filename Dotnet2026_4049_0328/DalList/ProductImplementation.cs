@@ -6,10 +6,10 @@ namespace Dal;
 
 internal class ProductImplementation : IProduct
 {
-    public int Create(Product product)
+    public int Create(Product item)
     {
            
-      Product p = product with { ProductId = Config.GetNextProductId() };
+      Product p = item with { ProductId = Config.GetNextProductId() };
         //if (DataSource.Products.Any(p => p.ProductId == item.ProductId))
         //    throw new DalListException($"Product with ID {item.ProductId} already exists.");
 

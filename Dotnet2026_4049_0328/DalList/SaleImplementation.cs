@@ -46,9 +46,6 @@ internal class SaleImplementation : ISale
     public void Update(Sale item)
     {
         Sale sale = Sales.FirstOrDefault(s => s.SaleId == item.SaleId) ?? throw new DalListException($"Sale with ID {item.SaleId} not found.");
-        sale.ProductId = item.ProductId;
-        sale.CustomerId = item.CustomerId;
-        sale.Quantity = item.Quantity;
-        sale.Date = item.Date;
+      
     }
 }

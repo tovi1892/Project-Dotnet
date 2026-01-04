@@ -1,13 +1,14 @@
 ﻿
 using DalApi;
 using DO;
+using Data
 
 internal class ImplementationCustomer : ICustomer
 {
 
     public int Create(Customer customer)
     {
-        int itemIndex = Customers.FindIndex(p => p?.CustomerId == customer.CustomerId);
+        int itemIndex = customers.FindIndex(p => p?.CustomerId == customer.CustomerId);
         if (itemIndex != -1)
         {
             throw new CustomerApperException("customer apper");
