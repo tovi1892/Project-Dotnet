@@ -15,4 +15,8 @@ public record Sale(
     DateTime EndSale
     )
 {
+    public Sale() : this(1, 1, 1, 20, false, DateTime.Now, DateTime.Now.AddDays(7))
+    {
+
+    }
 }
