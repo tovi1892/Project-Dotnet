@@ -1,12 +1,12 @@
-﻿using DalApi;
-using DalTest;
+﻿using Dal;
+using DalApi;
 using DO;
 
-namespace DelTest;
+namespace DalTest;
 
 class Program
 {
-    private static IDal dal=
+    private static IDal s_dal = new Dal.DalList();
 
     static void Main()
     {
@@ -71,7 +71,7 @@ class Program
             {
                 case 1: Create(entity); break;
                 case 2:
-                    if (entity == "Customer") (s_dal.customer);
+                    if (entity == "Customer") Read();
                     else if (entity == "Product") Read(s_dal.product);
                     else if (entity == "Sale") Read(s_dal.sale);
                     break;
@@ -108,19 +108,8 @@ class Program
         return -1;
     }
 
-    private static void Create(string entity)
-    {
-        try
-        {
-            if (entity == "Customer") Dal.();
-            else if (entity == "Product") CreateProduct();
-            else if (entity == "Sale") CreateSale();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Create failed: " + ex);
-        }
-    }
+   
+    
 }
 
 
