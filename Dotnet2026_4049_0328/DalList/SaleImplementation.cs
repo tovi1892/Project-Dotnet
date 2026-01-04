@@ -6,7 +6,7 @@ namespace Dal;
 
 internal class SaleImplementation : ISale
 {
-    public int Creat(Sale item)
+    public int Create(Sale item)
     {
 
 
@@ -24,7 +24,7 @@ internal class SaleImplementation : ISale
     {
         var sale = Sales.FirstOrDefault(s => s.SaleId == id);
         if (sale == null)
-            throw new DalListException($"Sale with ID {id} not found.");
+            throw new ($"Sale with ID {id} not found.");
 
         Sales.Remove(sale);
     }
@@ -33,7 +33,7 @@ internal class SaleImplementation : ISale
     {
         var sale = DataSource.Sales.FirstOrDefault(s => s.SaleId == id);
         if (sale == null)
-            throw new DalListException($"Sale with ID {id} not found.");
+            throw new ($"Sale with ID {id} not found.");
 
         return sale;
     }
@@ -45,7 +45,7 @@ internal class SaleImplementation : ISale
 
     public void Update(Sale item)
     {
-        Sale sale = Sales.FirstOrDefault(s => s.SaleId == item.SaleId) ?? throw new DalListException($"Sale with ID {item.SaleId} not found.");
+        Sale sale = Sales.FirstOrDefault(s => s.SaleId == item.SaleId) ?? throw new ($"Sale with ID {item.SaleId} not found.");
       
     }
 }

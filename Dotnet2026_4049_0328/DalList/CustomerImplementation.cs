@@ -1,7 +1,7 @@
 ﻿
 using DalApi;
 using DO;
-using Data
+using DalList;
 
 internal class ImplementationCustomer : ICustomer
 {

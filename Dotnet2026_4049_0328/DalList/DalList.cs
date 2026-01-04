@@ -6,11 +6,11 @@ namespace Dal;
 
 public class DalList : IDal
 {
-    public ISale sale => new SaleImplementation();
+    public ISale Sale => new SaleImplementation();
        
 
-    public IProduct product => new ProductImplementation();
+    public IProduct Product => new ProductImplementation();
 
-    public ICustomer customer => new CustomerImplementation();
+    public ICustomer Customer => new CustomerI
 
 }

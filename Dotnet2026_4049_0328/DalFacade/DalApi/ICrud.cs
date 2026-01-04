@@ -2,7 +2,7 @@
 
 namespace DalApi;
 
-interface ICrudcs<T>
+ public interface ICrudcs<T>
 {
     int Create(T item);
     T? Read(int id);
