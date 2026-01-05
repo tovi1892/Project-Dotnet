@@ -9,7 +9,7 @@ public record Sale(
     int SaleId,
     int ProductId,
     int QuantityToSale,
-    int TotalPrice,
+    double TotalPrice,
     bool IsClube,
     DateTime StartSale,
     DateTime EndSale

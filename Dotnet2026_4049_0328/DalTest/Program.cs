@@ -186,7 +186,6 @@ class Program
         return int.TryParse(Console.ReadLine(), out int c) ? c : -1;
     }
 
-    // ================= GENERIC METHODS (דרישת שלב הבא) =================
 
     private static void Read<T>(ICrud<T> repo)
     {
@@ -208,7 +207,6 @@ class Program
             repo.Delete(id);
     }
 
-    // ================= CUSTOMER =================
 
     private static void CrudCustomer()
     {
@@ -239,6 +237,8 @@ class Program
 
         Customer c = new Customer { CustomerId = id, CustomerName = name, CustomerAddress = address };
         s_dal.Customer.Create(c);
+        Console.WriteLine(   s_dal.Customer.Read(c.CustomerId)); 
+
     }
 
     private static void UpdateCustomer()
@@ -252,6 +252,8 @@ class Program
 
         Customer c = new Customer { CustomerId = id, CustomerName = name, CustomerAddress = address };
         s_dal.Customer.Update(c);
+        s_dal.Customer.Read(c.CustomerId);
+
     }
 
     // ================= PRODUCT =================
@@ -276,14 +278,14 @@ class Program
 
     private static void CreateProduct()
     {
-        Console.Write("Id: ");
-        int.TryParse(Console.ReadLine(), out int id);
+        //Console.Write("Id: ");
+        //int.TryParse(Console.ReadLine(), out int id);
         Console.Write("Name: ");
         string name = Console.ReadLine()!;
         Console.Write("Price: ");
         double.TryParse(Console.ReadLine(), out double price);
 
-        Product p = new Product { ProductId = id, ProductName = name, Price = price };
+        Product p = new Product { ProductName = name, Price = price };
         s_dal.Product.Create(p);
     }
 
@@ -329,8 +331,8 @@ class Program
         Console.Write("Price: ");
         double.TryParse(Console.ReadLine(), out double price);
 
-        //Sale s = new Sale { SaleId = id, ProductId = productId, Price = price };
-        //s_dal.Sale.Create(s);
+        Sale s = new Sale { SaleId = id, ProductId = productId, TotalPrice = price };
+        s_dal.Sale.Create(s);
     }
 
     private static void UpdateSale()
@@ -342,8 +344,8 @@ class Program
         Console.Write("Price: ");
         double.TryParse(Console.ReadLine(), out double price);
 
-        //Sale s = new Sale { SaleId = id, ProductId = productId, tPrice = price };
-        //s_dal.Sale.Update(s);
+        Sale s = new Sale { SaleId = id, ProductId = productId, TotalPrice = price };
+        s_dal.Sale.Update(s);
     }
 }
 
