@@ -10,8 +10,8 @@ internal class ProductImplementation : IProduct
     {
            
       Product p = item with { ProductId = Config.GetNextProductId() };
-        if (DataSource.Products.Any(p => p.ProductId == item.ProductId))
-            throw new ItemApperException($"Product with ID {item.ProductId} already exists.");
+        //if (DataSource.Products.Any(p => p.ProductId == item.ProductId))
+        //    throw new ItemApperException($"Product with ID {item.ProductId} already exists.");
 
         Products.Add(p);
         return p.ProductId;

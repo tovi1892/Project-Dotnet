@@ -115,14 +115,13 @@ class Program
 
     private static void CreateCustomer()
     {
-        Console.Write("Id: ");
-        int.TryParse(Console.ReadLine(), out int id);
+        
         Console.Write("Name: ");
         string name = Console.ReadLine()!;
         Console.Write("Address: ");
         string address = Console.ReadLine()!;
 
-        Customer c = new Customer { CustomerId = id, CustomerName = name, CustomerAddress = address };
+        Customer c = new Customer {  CustomerName = name, CustomerAddress = address };
         s_dal.Customer.Create(c);
         Console.WriteLine(   s_dal.Customer.Read(c.CustomerId)); 
 
@@ -209,14 +208,14 @@ class Program
 
     private static void CreateSale()
     {
-        Console.Write("Id: ");
-        int.TryParse(Console.ReadLine(), out int id);
+        //Console.Write("Id: ");
+        //int.TryParse(Console.ReadLine(), out int id);
         Console.Write("Product Id: ");
         int.TryParse(Console.ReadLine(), out int productId);
         Console.Write("Price: ");
         double.TryParse(Console.ReadLine(), out double price);
 
-        Sale s = new Sale { SaleId = id, ProductId = productId, TotalPrice = price };
+        Sale s = new Sale {  ProductId = productId, TotalPrice = price };
         s_dal.Sale.Create(s);
     }
 
