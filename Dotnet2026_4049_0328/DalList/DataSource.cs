@@ -12,11 +12,14 @@ internal static class DataSource
     internal static List<Sale?> Sales = new();
     internal static class Config
     {
-        internal const int MinIdProduct = 100;
+        internal const int MinIdProductId = 100;
         internal const int MinSaleId = 100;
 
-        private static int _currentProductId = 100;
-        private static int _currentSaleId = 100;
+     
+
+        private static int _currentProductId = MinIdProductId;
+        private static int _currentSaleId = MinSaleId;
+       
 
         public static int GetNextProductId()
         {

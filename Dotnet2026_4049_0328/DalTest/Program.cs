@@ -115,13 +115,15 @@ class Program
 
     private static void CreateCustomer()
     {
-        
+        Console.Write("Id: ");
+        int id= Console.Read();
+        Console.ReadLine();
         Console.Write("Name: ");
         string name = Console.ReadLine()!;
         Console.Write("Address: ");
         string address = Console.ReadLine()!;
 
-        Customer c = new Customer {  CustomerName = name, CustomerAddress = address };
+        Customer c = new Customer { CustomerId=id, CustomerName = name, CustomerAddress = address };
         s_dal.Customer.Create(c);
         Console.WriteLine(   s_dal.Customer.Read(c.CustomerId)); 
 
@@ -138,7 +140,8 @@ class Program
 
         Customer c = new Customer { CustomerId = id, CustomerName = name, CustomerAddress = address };
         s_dal.Customer.Update(c);
-        s_dal.Customer.Read(c.CustomerId);
+       
+        Console.WriteLine(s_dal.Customer.Read(c.CustomerId));
 
     }
 
@@ -163,15 +166,21 @@ class Program
 
     private static void CreateProduct()
     {
-        //Console.Write("Id: ");
-        //int.TryParse(Console.ReadLine(), out int id);
+        
         Console.Write("Name: ");
         string name = Console.ReadLine()!;
         Console.Write("Price: ");
         double.TryParse(Console.ReadLine(), out double price);
+        Console.Write("Bracelets-0, Earrings-1, Necklaces-2, Rings-3, Watches-4");
+        Categories c=(Categories)int.Parse(Console.ReadLine()??"0");
+        Console.Write("QuantityInStock: ");
+        int QuantityInStock = Console.Read()!;
 
-        Product p = new Product { ProductName = name, Price = price };
+        Product p = new Product { ProductName = name, Category = c, QuantityInStock= QuantityInStock, Price = price };
         s_dal.Product.Create(p);
+        Console.WriteLine(s_dal.Customer.Read(p.ProductId));
+
+
     }
 
     private static void UpdateProduct()
@@ -185,6 +194,7 @@ class Program
 
         Product p = new Product { ProductId = id, ProductName = name, Price = price };
         s_dal.Product.Update(p);
+        Console.WriteLine(s_dal.Customer.Read(p.ProductId));
     }
 
 
@@ -208,8 +218,7 @@ class Program
 
     private static void CreateSale()
     {
-        //Console.Write("Id: ");
-        //int.TryParse(Console.ReadLine(), out int id);
+        
         Console.Write("Product Id: ");
         int.TryParse(Console.ReadLine(), out int productId);
         Console.Write("Price: ");
@@ -217,6 +226,7 @@ class Program
 
         Sale s = new Sale {  ProductId = productId, TotalPrice = price };
         s_dal.Sale.Create(s);
+        Console.WriteLine(s_dal.Customer.Read(s.SaleId));
     }
 
     private static void UpdateSale()
@@ -230,6 +240,8 @@ class Program
 
         Sale s = new Sale { SaleId = id, ProductId = productId, TotalPrice = price };
         s_dal.Sale.Update(s);
+        Console.WriteLine(s_dal.Customer.Read(s.SaleId));
+
     }
 }
 
