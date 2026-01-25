@@ -1,24 +1,19 @@
 ﻿
 
-using System;
-
 namespace DO;
 
-public class ItemNotFoundException : Exception
+[global::System.Serializable]
+public class DalItemNotFoundException : global::System.Exception
 {
-    public ItemNotFoundException(string message)
+    public DalItemNotFoundException(string message)
         : base(message)
-    {
-        Console.WriteLine( message);
-    }
+    { }
 }
 
-public class ItemApperException : Exception
+[global::System.Serializable]
+public class DalItemAlreadyExistsException : global::System.Exception
 {
-    public ItemApperException(string message)
+    public DalItemAlreadyExistsException(string message)
         : base(message)
-    {
-        Console.WriteLine(message);
-
-    }
+    { }
 }
