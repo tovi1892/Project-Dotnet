@@ -10,13 +10,23 @@ internal class CustomerImplementation : ICustomer
 
     public int Create(Customer customer)
     {
-        int itemIndex = Customers.FindIndex(p => p?.CustomerId == customer.CustomerId);
-        if (itemIndex != -1)
-        {
+        var q = from c in Customers
+                where c.CustomerId == customer.CustomerId
+                select c;
+        if (q.FirstOrDefault() !=null)
             throw new ItemApperException("customer apper");
-        }
         Customers.Add(customer);
-        return customer.CustomerId;
+        ;
+
+
+
+        //int itemIndex = Customers.FindIndex(p => p?.CustomerId == customer.CustomerId);
+        //if (itemIndex != -1)
+        //{
+        //    throw new ItemApperException("customer apper");
+        //}
+        //Customers.Add(customer);
+        return q;
     }
     public Customer? Read(int id)
     {
