@@ -32,23 +32,29 @@ internal class CustomerImplementation : ICustomer
         return customer.CustomerId;
     }
 
-    public Customer? Read(int id)
+public Customer? Read(Func<Customer, bool> filter)
     {
         var q = from c in Customers
-                where c.CustomerId == id
+                where filter(c)
                 select c;
-
         Customer? cus = q.FirstOrDefault();
         if (cus == null)
-            throw new DalItemNotFoundException($"Customer with ID {id} not found.");
+            throw new DalItemNotFoundException($"Customer not found.");
         return cus;
     }
 
-    public List<Customer> ReadAll()
-    {
-        // החזרת עותק של הרשימה כדי לא לחשוף את המבנה הפנימי
-        return Customers.ToList();
+
+    public List<Customer?> ReadAll(Func<Customer, bool>? filter=null )    {
+
+        if (filter == null)
+            return Customers.ToList();
+
+        var q = from c in Customers
+                where filter(c)
+                select c;
+        return q.ToList();
     }
+
 
     public void Update(Customer item)
     {
@@ -83,4 +89,6 @@ internal class CustomerImplementation : ICustomer
 
         Customers.RemoveAt(idx);
     }
+
+  
 }

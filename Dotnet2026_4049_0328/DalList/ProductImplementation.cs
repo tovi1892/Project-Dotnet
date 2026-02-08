@@ -148,21 +148,28 @@ internal class ProductImplementation : IProduct
         Products.RemoveAt(idx);
     }
 
-    public Product? Read(int id)
+    public Product? Read(Func<Product, bool> filter) 
     {
         var q = from p in Products
-                where p.ProductId == id
+                where filter(p)
                 select p;
 
         Product? prod = q.FirstOrDefault();
         if (prod == null)
-            throw new DalItemNotFoundException($"Product with ID {id} not found.");
+            throw new DalItemNotFoundException($"Product  not found.");
         return prod;
     }
 
-    public List<Product> ReadAll()
-    {
-        return Products.ToList();
+    public List<Product?> ReadAll(Func<Product, bool>? filter=null)
+    
+        {
+        if (filter == null)
+            return Products.ToList();
+
+        var q = from p in Products
+                where filter(p)
+                select p;
+        return q.ToList();
     }
 
     public void Update(Product item)

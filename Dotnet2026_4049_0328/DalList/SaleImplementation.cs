@@ -1,114 +1,8 @@
 ﻿
-////using DalApi;
-////using DO;
-////using static Dal.DataSource;
-
-////using DO;
-////using DalApi;
-////using static Dal.DataSource;
-
-////namespace Dal;
-
-////internal class SaleImplementation : ISale
-////{
-////    public int Create(Sale item)
-////    {
-////        Sale s = item with { SaleId = Config.GetNextProductId() };
-
-////        Sales.Add(s);
-////        return s.SaleId;
-////    }
-
-////    public void Delete(int id)
-////    {
-////        var sale = Sales.FirstOrDefault(s => s.SaleId == id);
-////        if (sale == null)
-////            throw new DalItemNotFoundException($"Sale with ID {id} not found.");
-
-////        Sales.Remove(sale);
-////    }
-
-////    public Sale? Read(int id)
-////    {
-////        var sale = DataSource.Sales.FirstOrDefault(s => s.SaleId == id);
-////        if (sale == null)
-////            throw new DalItemNotFoundException($"Sale with ID {id} not found.");
-
-////        return sale;
-////    }
-
-////    public List<Sale> ReadAll()
-////    {
-////        return Sales.ToList();
-////    }
-
-////    public void Update(Sale item)
-////    {
-////        int itemIndex = Sales.FindIndex(p => p?.SaleId == item.SaleId);
-////        if (itemIndex == -1)
-////        {
-////            throw new DalItemNotFoundException($"Sale with ID {item.SaleId} not found.");
-////        }
-////        Sales[itemIndex] = item;
-////    }
-////}
-//using DalApi;
-//using DO;
-//using static Dal.DataSource;
-
-
-
-//namespace Dal;
-
-//internal class SaleImplementation : ISale
-//{
-//    public int Create(Sale item)
-//    {
-//        // keep existing id generator usage
-//        Sale s = item with { SaleId = Config.GetNextProductId() };
-//        Sales.Add(s);
-//        return s.SaleId;
-//    }
-
-//    public void Delete(int id)
-//    {
-//        var sale = Sales.FirstOrDefault(s => s.SaleId == id);
-//        if (sale == null)
-//            throw new DalItemNotFoundException($"Sale with ID {id} not found.");
-
-//        Sales.Remove(sale);
-//    }
-
-//    public Sale? Read(int id)
-//    {
-//        var sale = Sales.FirstOrDefault(s => s.SaleId == id);
-//        if (sale == null)
-//            throw new DalItemNotFoundException($"Sale with ID {id} not found.");
-//        return sale;
-//    }
-
-//    public List<Sale> ReadAll()
-//    {
-//        return Sales.ToList();
-//    }
-
-//    public void Update(Sale item)
-//    {
-//        var found = Sales
-//            .Select((s, i) => new { Sale = s, Index = i })
-//            .FirstOrDefault(x => x.Sale.SaleId == item.SaleId);
-
-//        if (found == null)
-//            throw new DalItemNotFoundException($"Sale with ID {item.SaleId} not found.");
-
-//        Sales[found.Index] = item;
-//    }
-//}
 using DalApi;
 using DO;
 
-using DalApi;
-using DO;
+
 using System.Linq;
 
 using static Dal.DataSource;
@@ -118,7 +12,7 @@ internal class SaleImplementation : ISale
 {
     public int Create(Sale item)
     {
-        // אם caller לא מספק id -> DAL מקצה id (Max+1)
+       
         if (item.SaleId == 0)
         {
             int nextId = Sales.Any() ? Sales.Max(s => s.SaleId) + 1 : 1;
@@ -154,21 +48,26 @@ internal class SaleImplementation : ISale
         Sales.RemoveAt(idx);
     }
 
-    public Sale? Read(int id)
+    public Sale? Read(Func<Sale ,bool> filter)
     {
         var q = from s in Sales
-                where s.SaleId == id
+                where filter(s)
                 select s;
 
         Sale? sale = q.FirstOrDefault();
         if (sale == null)
-            throw new DalItemNotFoundException($"Sale with ID {id} not found.");
+            throw new DalItemNotFoundException($"Sale  not found.");
         return sale;
     }
+    public List<Sale?> ReadAll(Func<Sale, bool>? filter=null)
+{
+        if(filter == null)
+            return new List<Sale?>(Sales);
 
-    public List<Sale> ReadAll()
-    {
-        return Sales.ToList();
+        var q = from s in Sales
+                where filter(s)
+                select s;
+        return new List<Sale?>(q);
     }
 
     public void Update(Sale item)
