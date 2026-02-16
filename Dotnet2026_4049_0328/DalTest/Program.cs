@@ -363,19 +363,19 @@ class Program
     // Read by ID
     private static void ReadById<T>(ICrud<T> repo)
     {
-        Console.Write("Enter id: ");
-        if (int.TryParse(Console.ReadLine(), out int id))
-        {
-            try
-            {
-                var result = repo.Read(id);
-                Console.WriteLine(result);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-        }
+        //Console.Write("Enter id: ");
+        //if (int.TryParse(Console.ReadLine(), out int id))
+        //{
+        //    try
+        //    {
+        //        var result = repo.Read(id);
+        //        Console.WriteLine(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error: {ex.Message}");
+        //    }
+        //}
     }
 
     private static void ReadAll<T>(ICrud<T> repo)

@@ -10,7 +10,11 @@
 	  <AppendTargetFrameWorkToOutputPath>false</AppendTargetFrameWorkToOutputPath>
 	  <AppendRunTimeIdentifierToOutputPath>false</AppendRunTimeIdentifierToOutputPath>
 	  <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
-	  <RootNamespace/>
+	  <RootNamespace />
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tools--\Tools__.csproj" />
+  </ItemGroup>
 
 </Project>
