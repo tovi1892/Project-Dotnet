@@ -266,6 +266,8 @@
 using Dal;
 using DalApi;
 using DO;
+using Tools__;
+using System.Reflection;
 
 namespace DalTest;
 
@@ -305,6 +307,7 @@ class Program
                     case 2: CrudProduct(); break;
                     case 3: CrudSale(); break;
                     case 4: exit = true; break;
+                    case 5: LogManager.cleanLogs(); break;
                     default: Console.WriteLine("Invalid choice"); break;
                 }
             }
@@ -323,6 +326,7 @@ class Program
         Console.WriteLine("2. Product");
         Console.WriteLine("3. Sale");
         Console.WriteLine("4. Exit");
+        Console.WriteLine("5.clean logs");
         Console.Write("Choice: ");
         return int.TryParse(Console.ReadLine(), out int c) ? c : -1;
     }
