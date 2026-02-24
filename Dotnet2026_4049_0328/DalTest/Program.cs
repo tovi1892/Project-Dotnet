@@ -263,7 +263,7 @@
 //    }
 //}
 
-using Dal;
+//using Dal;
 using DalApi;
 using DO;
 using Tools__;
@@ -274,7 +274,7 @@ namespace DalTest;
 class Program
 {
     public delegate bool FilterDel<T>(T x);
-    private static readonly IDal s_dal = new Dal.DalList();
+    private static readonly IDal s_dal = DalApi.Factory.Get;
 
     public static bool CustomerFilter(Customer c) => c.CustomerName == "tovi";
     public static bool ProductFilter(Product p) => p.Price > 2;
@@ -284,7 +284,7 @@ class Program
     {
         try
         {
-            Initialization.Initialize(s_dal);
+            Initialization.Initialize();
             RunMenuLoop();
         }
         catch (Exception ex)
