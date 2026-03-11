@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{49CF
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlTest", "BlTest\BlTest.vcxproj", "{FBB5A841-1B74-4A9A-8E04-67E46D17F60C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalXml", "DalXml\DalXml.csproj", "{15E87993-7196-4B3F-B70C-F42912B0EB5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -164,6 +166,26 @@ Global
 		{FBB5A841-1B74-4A9A-8E04-67E46D17F60C}.Release|x86.ActiveCfg = Release|x86
 		{FBB5A841-1B74-4A9A-8E04-67E46D17F60C}.Release|x86.Build.0 = Release|x86
 		{FBB5A841-1B74-4A9A-8E04-67E46D17F60C}.Release|x86.Deploy.0 = Release|x86
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|x64.Build.0 = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Debug|x86.Build.0 = Debug|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|ARM.Build.0 = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|ARM64.Build.0 = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|x64.ActiveCfg = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|x64.Build.0 = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|x86.ActiveCfg = Release|Any CPU
+		{15E87993-7196-4B3F-B70C-F42912B0EB5A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
