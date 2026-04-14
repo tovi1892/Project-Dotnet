@@ -1,4 +1,12 @@
 ﻿namespace BO
 {
-    // reserved for additional enums; kept valid to avoid malformed-file errors
+    // Categories used in BO (match DO.Categories)
+    public enum Categories
+    {
+        Bracelets,
+        Earrings,
+        Necklaces,
+        Rings,
+        Watches
+    }
 }

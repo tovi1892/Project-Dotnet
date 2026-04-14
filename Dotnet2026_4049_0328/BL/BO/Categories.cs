@@ -1,11 +1,4 @@
 ﻿namespace BO
 {
-    public enum Categories
-    {
-        Bracelets,
-        Earrings,
-        Necklaces,
-        Rings,
-        Watches
-    }
+    // kept intentionally empty (Enums.cs contains the enum) to avoid duplicate-type errors.
 }

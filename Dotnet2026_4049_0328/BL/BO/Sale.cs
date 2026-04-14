@@ -12,6 +12,7 @@ namespace BO
         public DateTime SaleStartDate { get; set; }
         public DateTime SaleEndDate { get; set; }
 
+        // fixed recursion -> use reflection-based printer
         public override string ToString() => this.ToStringProperty();
     }
 }
