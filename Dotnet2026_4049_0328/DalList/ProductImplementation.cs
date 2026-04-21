@@ -101,7 +101,7 @@
 using DalApi;
 using DO;
 using System.Reflection;
-using Tools__;
+using Tool;
 
 using DalApi;
 using DO;
@@ -233,6 +233,22 @@ internal class ProductImplementation : IProduct
             );
             throw;
         }
+    }
+
+    public Product? Read(int id)
+    {
+        LogManager.WriteLog(MethodBase.GetCurrentMethod().DeclaringType.FullName,
+    MethodBase.GetCurrentMethod().Name, "start func");
+        var q = from p in Products
+                where p.ProductId == id
+                select p;
+        Product? product = q.FirstOrDefault();
+
+        if (product == null)
+            throw new DalItemNotFoundException("notContainThisIdException");
+        LogManager.WriteLog(MethodBase.GetCurrentMethod().DeclaringType.FullName,
+    MethodBase.GetCurrentMethod().Name, "finish func");
+        return product;
     }
 
     public List<Product?> ReadAll(Func<Product, bool>? filter = null)

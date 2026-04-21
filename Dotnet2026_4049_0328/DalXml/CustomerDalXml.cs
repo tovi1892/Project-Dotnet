@@ -17,7 +17,7 @@ internal class CustomerDalXml : ICustomer
 
         // 3. יצירת האובייקט החדש עם ה-ID שנוצר
         // (הנחת עבודה: Customer הוא class או record עם בנאי מתאים)
-        Customer newCustomer = item with { Id = nextId };
+        Customer newCustomer = item with { CustomerId = nextId };
 
         customers.Add(newCustomer);
 
@@ -30,7 +30,7 @@ internal class CustomerDalXml : ICustomer
     public Customer? Read(int id)
     {
         return XMLTools.LoadListFromXmlSerializer<Customer>(s_path)
-                       .FirstOrDefault(c => c.Id == id);
+                       .FirstOrDefault(c => c.CustomerId == id);
     }
 
     public Customer? Read(Func<Customer, bool> filter)
@@ -50,10 +50,10 @@ internal class CustomerDalXml : ICustomer
         List<Customer> customers = XMLTools.LoadListFromXmlSerializer<Customer>(s_path);
 
         // מציאת האינדקס של הלקוח לעדכון
-        int index = customers.FindIndex(c => c.Id == item.Id);
+        int index = customers.FindIndex(c => c.CustomerId == item.CustomerId);
 
         if (index == -1)
-            throw new Exception($"Customer with ID {item.Id} was not found.");
+            throw new Exception($"Customer with ID {item.CustomerId} was not found.");
 
         // עדכון הרשימה ושמירה
         customers[index] = item;
@@ -64,7 +64,7 @@ internal class CustomerDalXml : ICustomer
     {
         List<Customer> customers = XMLTools.LoadListFromXmlSerializer<Customer>(s_path);
 
-        Customer? customer = customers.FirstOrDefault(c => c.Id == id);
+        Customer? customer = customers.FirstOrDefault(c => c.CustomerId == id);
         if (customer == null)
             throw new Exception($"Customer with ID {id} does not exist.");
 

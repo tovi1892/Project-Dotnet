@@ -16,17 +16,17 @@ internal class CustomerImplementation : BL.BlApi.ICustomer
         {
             // query-syntax usage #1: check duplicates by PhoneNumber before creating (example of a query expression)
             var duplicate = (from c in _dal.Customer.ReadAll()
-                             where c != null && c.PhoneNumber == doItem.PhoneNumber
+                             where c != null && c.CustomerPhone == doItem.CustomerPhone
                              select c).FirstOrDefault();
 
             if (duplicate != null)
             {
-                throw new BlAlreadyExistsException(duplicate.Id, "Customer");
+                throw new BlAlreadyExistsException(duplicate.CustomerId, "Customer");
             }
 
             return _dal.Customer.Create(doItem);
         }
-        catch (DO.AlreadyExistsIdException ex)
+        catch (DO.DalItemAlreadyExistsException ex)
         {
             // wrap DAL/DO exception in BL exception and rethrow
             throw new BlAlreadyExistsException(ex.HResult, "Customer", ex);
@@ -44,7 +44,7 @@ internal class CustomerImplementation : BL.BlApi.ICustomer
             var d = _dal.Customer.Read(id);
             return d == null ? null : BO.Tools.ToBo(d);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(id, "Customer", ex);
         }
@@ -64,7 +64,7 @@ internal class CustomerImplementation : BL.BlApi.ICustomer
 
             return result;
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             // in case DAL throws DO.NotFound (defensive)
             throw new BlIdNotFoundException(-1, "Customer", ex);
@@ -94,7 +94,7 @@ internal class CustomerImplementation : BL.BlApi.ICustomer
                        .Select(d => BO.Tools.ToBo(d))
                        .ToList();
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(-1, "Customer", ex);
         }
@@ -108,7 +108,7 @@ internal class CustomerImplementation : BL.BlApi.ICustomer
         {
             _dal.Customer.Update(doItem);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(item.Id, "Customer", ex);
         }
@@ -120,7 +120,7 @@ internal class CustomerImplementation : BL.BlApi.ICustomer
         {
             _dal.Customer.Delete(id);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(id, "Customer", ex);
         }

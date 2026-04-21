@@ -10,9 +10,9 @@ internal class SaleDalXml : ISale
     public int Create(Sale item)
     {
         List<Sale> list = XMLTools.LoadListFromXmlSerializer<Sale>(s_path);
-        int nextId = Config.SaleId;
+        int nextId = Config.SaleNum;
 
-        Sale newItem = item with { Id = nextId }; // יצירת עותק עם ה-ID החדש
+        Sale newItem = item with { SaleId = nextId }; // יצירת עותק עם ה-ID החדש
         list.Add(newItem);
 
         XMLTools.SaveListToXmlSerializer(list, s_path);
@@ -20,7 +20,7 @@ internal class SaleDalXml : ISale
     }
 
     public Sale? Read(int id) =>
-        XMLTools.LoadListFromXmlSerializer<Sale>(s_path).FirstOrDefault(s => s.Id == id);
+        XMLTools.LoadListFromXmlSerializer<Sale>(s_path).FirstOrDefault(s => s.SaleId == id);
 
     public Sale? Read(Func<Sale, bool> filter) =>
         XMLTools.LoadListFromXmlSerializer<Sale>(s_path).FirstOrDefault(filter);
@@ -34,7 +34,7 @@ internal class SaleDalXml : ISale
     public void Update(Sale item)
     {
         List<Sale> list = XMLTools.LoadListFromXmlSerializer<Sale>(s_path);
-        int index = list.FindIndex(s => s.Id == item.Id);
+        int index = list.FindIndex(s => s.SaleId == item.SaleId);
 
         if (index == -1) throw new Exception("Sale not found");
 
@@ -45,7 +45,7 @@ internal class SaleDalXml : ISale
     public void Delete(int id)
     {
         List<Sale> list = XMLTools.LoadListFromXmlSerializer<Sale>(s_path);
-        Sale? item = list.FirstOrDefault(s => s.Id == id);
+        Sale? item = list.FirstOrDefault(s => s.SaleId == id);
 
         if (item == null) throw new Exception("Sale not found");
 

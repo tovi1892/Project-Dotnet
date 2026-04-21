@@ -17,17 +17,17 @@ internal class SaleImplementation : BL.BlApi.ISale
             // query-syntax usage #1: check overlapping sale for same product and date range
             var overlapping = (from s in _dal.Sale.ReadAll()
                                where s != null && s.ProductId == doItem.ProductId
-                                     && !(doItem.SaleEndDate <= s.SaleStartDate || doItem.SaleStartDate >= s.SaleEndDate)
+                                     && !(doItem.EndSale <= s.StartSale || doItem.StartSale >= s.EndSale)
                                select s).FirstOrDefault();
 
             if (overlapping != null)
             {
-                throw new BlAlreadyExistsException(overlapping.Id, "Sale");
+                throw new BlAlreadyExistsException(overlapping.ProductId, "Sale");
             }
 
             return _dal.Sale.Create(doItem);
         }
-        catch (DO.AlreadyExistsIdException ex)
+        catch (DO.DalItemAlreadyExistsException ex)
         {
             throw new BlAlreadyExistsException(ex.HResult, "Sale", ex);
         }
@@ -40,7 +40,7 @@ internal class SaleImplementation : BL.BlApi.ISale
             var d = _dal.Sale.Read(id);
             return d == null ? null : BO.Tools.ToBo(d);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(id, "Sale", ex);
         }
@@ -57,7 +57,7 @@ internal class SaleImplementation : BL.BlApi.ISale
                        .Select(d => BO.Tools.ToBo(d))
                        .FirstOrDefault(b => b != null && filter(b));
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(-1, "Sale", ex);
         }
@@ -85,7 +85,7 @@ internal class SaleImplementation : BL.BlApi.ISale
 
             return dalResult.ToList();
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(-1, "Sale", ex);
         }
@@ -99,7 +99,7 @@ internal class SaleImplementation : BL.BlApi.ISale
         {
             _dal.Sale.Update(doItem);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(item.Id, "Sale", ex);
         }
@@ -111,7 +111,7 @@ internal class SaleImplementation : BL.BlApi.ISale
         {
             _dal.Sale.Delete(id);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(id, "Sale", ex);
         }
