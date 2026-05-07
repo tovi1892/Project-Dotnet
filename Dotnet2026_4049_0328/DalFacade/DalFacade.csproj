@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tools--\Tools__.csproj" />
+    <ProjectReference Include="..\Tools--\Tool.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 using DalApi;
 using DO;
 using System.Reflection;
-using Tools__;
+using Tool;
 
 using System.Linq;
 
@@ -132,6 +132,23 @@ internal class SaleImplementation : ISale
             );
             throw;
         }
+    }
+
+    public Sale? Read(int id)
+    {
+        LogManager.WriteLog(MethodBase.GetCurrentMethod().DeclaringType.FullName,
+    MethodBase.GetCurrentMethod().Name, "start func");
+        var q = from s in Sales
+                where s.SaleId == id
+               
+                select s;
+        Sale? sale = q.FirstOrDefault();
+
+        if (sale == null)
+            throw new DalItemNotFoundException("notContainThisIdException");
+        LogManager.WriteLog(MethodBase.GetCurrentMethod().DeclaringType.FullName,
+    MethodBase.GetCurrentMethod().Name, "finish func");
+        return sale;
     }
 
     public List<Sale?> ReadAll(Func<Sale, bool>? filter = null)

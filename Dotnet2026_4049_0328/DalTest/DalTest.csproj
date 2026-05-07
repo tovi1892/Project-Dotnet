@@ -15,7 +15,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\DalFacade\DalFacade.csproj" />
 		<ProjectReference Include="..\DalList\DalList.csproj" />
-		<ProjectReference Include="..\Tools--\Tools__.csproj" />
+		<ProjectReference Include="..\DalXml\DalXml.csproj" />
+		<ProjectReference Include="..\Tools--\Tool.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -16,17 +16,17 @@ internal class ProductImplementation : BL.BlApi.IProduct
         {
             // query-syntax usage #1: check duplicate by name/category
             var duplicate = (from p in _dal.Product.ReadAll()
-                             where p != null && p.Name == doItem.Name && p.Category == doItem.Category
+                             where p != null && p.ProductName == doItem.ProductName && p.Category == doItem.Category
                              select p).FirstOrDefault();
 
             if (duplicate != null)
             {
-                throw new BlAlreadyExistsException(duplicate.Id, "Product");
+                throw new BlAlreadyExistsException(duplicate.ProductId, "Product");
             }
 
             return _dal.Product.Create(doItem);
         }
-        catch (DO.AlreadyExistsIdException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlAlreadyExistsException(ex.HResult, "Product", ex);
         }
@@ -39,7 +39,7 @@ internal class ProductImplementation : BL.BlApi.IProduct
             var d = _dal.Product.Read(id);
             return d == null ? null : BO.Tools.ToBo(d);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(id, "Product", ex);
         }
@@ -56,7 +56,7 @@ internal class ProductImplementation : BL.BlApi.IProduct
                        .Select(d => BO.Tools.ToBo(d))
                        .FirstOrDefault(b => b != null && filter(b));
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(-1, "Product", ex);
         }
@@ -84,7 +84,7 @@ internal class ProductImplementation : BL.BlApi.IProduct
 
             return dalResult.ToList();
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(-1, "Product", ex);
         }
@@ -98,7 +98,7 @@ internal class ProductImplementation : BL.BlApi.IProduct
         {
             _dal.Product.Update(doItem);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(item.Id, "Product", ex);
         }
@@ -110,7 +110,7 @@ internal class ProductImplementation : BL.BlApi.IProduct
         {
             _dal.Product.Delete(id);
         }
-        catch (DO.IdNotFoundException ex)
+        catch (DO.DalItemNotFoundException ex)
         {
             throw new BlIdNotFoundException(id, "Product", ex);
         }

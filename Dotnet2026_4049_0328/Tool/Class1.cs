@@ -45,7 +45,7 @@ public static class LogManager
             string[] monthDirectories = Directory.GetDirectories(mainLogPath);
             foreach (string monthPath in monthDirectories)
             {
-                string folderName = Path.GetFileName(monthPath);
+                string folderName = Path.GetFileName(monthPath); 
 
                 if (DateTime.TryParse(folderName, out DateTime folderDate))
                 {

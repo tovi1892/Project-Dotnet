@@ -43,7 +43,6 @@ namespace Dal
             return nextId;
         }
 
-        // ICrud<T> expects Read(Func<T,bool>) - keep also Read by id for convenience
         public Product? Read(Func<Product, bool> filter)
         {
             if (!File.Exists(s_path)) throw new Exception("Products XML not found.");

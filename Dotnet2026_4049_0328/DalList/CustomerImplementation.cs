@@ -6,7 +6,7 @@ using DalApi;
 using DO;
 using System.Linq;
 using System.Reflection;
-using Tools__;
+using Tool;
 
 using static Dal.DataSource;
 namespace Dal;
@@ -216,5 +216,17 @@ internal class CustomerImplementation : ICustomer
         }
     }
 
-  
+    public Customer? Read(int id)
+    {
+        LogManager.WriteLog(MethodBase.GetCurrentMethod().DeclaringType.FullName,
+    MethodBase.GetCurrentMethod().Name, "start func");
+        var q = from c in Customers where c.CustomerId == id select c;
+        Customer? cu = q.FirstOrDefault();
+
+        if (cu == null)
+            throw new DalItemNotFoundException("notContainThisIdException");
+        LogManager.WriteLog(MethodBase.GetCurrentMethod().DeclaringType.FullName,
+    MethodBase.GetCurrentMethod().Name, "finish func");
+        return cu;
+    }
 }
