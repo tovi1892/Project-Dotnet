@@ -3,18 +3,18 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-	  <RootNamespace ></RootNamespace>
     <Nullable>enable</Nullable>
+
+    <!-- Match UI output folder so BL.dll is placed next to the UI executable -->
+    <BaseOutputPath>$(SolutionDir)bin\</BaseOutputPath>
+    <OutputPath>$(SolutionDir)bin\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DalFacade\DalFacade.csproj" />
     <ProjectReference Include="..\DalList\DalList.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="BlApi\" />
-    <Folder Include="BlImplementation\" />
-  </ItemGroup>
-
 </Project>

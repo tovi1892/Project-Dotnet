@@ -170,11 +170,16 @@ class Program
         string name = Console.ReadLine()!;
         Console.Write("New Address: ");
         string address = Console.ReadLine()!;
+        Console.WriteLine(  "New Phone:");
+        string phone = Console.ReadLine()!;
 
-        Customer c = new Customer { CustomerId = id, CustomerName = name, CustomerAddress = address };
+
+
+
+        Customer c = new Customer { CustomerId = id, CustomerName = name, CustomerAddress = address,CustomerPhone   =phone };
         s_dal.Customer.Update(c);
 
-        Console.WriteLine(s_dal.Customer.Read(c => c.CustomerName == "tovi"));
+        Console.WriteLine(s_dal.Customer.Read(c.CustomerId));
     }
 
     private static void CrudProduct()
