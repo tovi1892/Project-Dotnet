@@ -40,9 +40,9 @@
 //            }
 //        }
 
-//        private void label1_Click(object sender, EventArgs e)
-//        {
-//        }
+//private void label1_Click(object sender, EventArgs e)
+//{
+//}
 
 //        private void comboProducts_SelectedIndexChanged(object sender, EventArgs e)
 //        {
@@ -298,6 +298,8 @@ namespace UI_
             InitializeComponent();
             panelDetails.Visible = false;
             panelOrder.Visible = false;
+            ThemeHelper.Apply(this);
+
         }
 
         private void Cashier_Load(object sender, EventArgs e)

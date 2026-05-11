@@ -25,6 +25,7 @@ namespace UI_
             panelDelete.Visible = false;
             panelShowAll.Visible = false;
             LoadCategories();
+            ThemeHelper.Apply(this);
         }
 
         private void LoadCategories()

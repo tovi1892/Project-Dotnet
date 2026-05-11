@@ -16,35 +16,36 @@ namespace UI_
 
         private void InitializeComponent()
         {
-            this.dgvSales = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
-            this.SuspendLayout();
+            dgvSales = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvSales).BeginInit();
+            SuspendLayout();
             // 
             // dgvSales
             // 
-            this.dgvSales.AllowUserToAddRows = false;
-            this.dgvSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSales.Location = new System.Drawing.Point(0, 0);
-            this.dgvSales.Name = "dgvSales";
-            this.dgvSales.ReadOnly = true;
-            this.dgvSales.RowHeadersWidth = 51;
-            this.dgvSales.RowTemplate.Height = 29;
-            this.dgvSales.Size = new System.Drawing.Size(600, 400);
-            this.dgvSales.TabIndex = 0;
+            dgvSales.AllowUserToAddRows = false;
+            dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSales.Dock = DockStyle.Fill;
+            dgvSales.Location = new Point(0, 0);
+            dgvSales.Name = "dgvSales";
+            dgvSales.ReadOnly = true;
+            dgvSales.RowHeadersWidth = 51;
+            dgvSales.Size = new Size(600, 400);
+            dgvSales.TabIndex = 0;
+            dgvSales.CellContentClick += dgvSales_CellContentClick;
             // 
             // SalesListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 400);
-            this.Controls.Add(this.dgvSales);
-            this.Name = "SalesListForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Active Sales";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(600, 400);
+            Controls.Add(dgvSales);
+            Name = "SalesListForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Active Sales";
+            //Load += this.SalesListForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvSales).EndInit();
+            ResumeLayout(false);
         }
     }
 }

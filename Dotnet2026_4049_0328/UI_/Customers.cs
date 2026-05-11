@@ -24,6 +24,8 @@ namespace UI_
             panelUpdate.Visible = false;
             panelDelete.Visible = false;
             panelShowAll.Visible = false;
+            ThemeHelper.Apply(this);
+
         }
 
         private void Customers_Load(object sender, EventArgs e)

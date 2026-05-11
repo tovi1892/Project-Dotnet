@@ -5,6 +5,7 @@
         public Manager()
         {
             InitializeComponent();
+            ThemeHelper.Apply(this); // זה יחיל את העיצוב על הטופס הנוכחי וכל מה שבתוכו
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -23,6 +24,11 @@
         {
             Sales sales = new Sales();
             sales.ShowDialog();
+        }
+
+        private void Manager_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

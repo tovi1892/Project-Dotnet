@@ -25,6 +25,8 @@ namespace UI_
             panelDelete.Visible = false;
             panelShowAll.Visible = false;
             LoadProductsToComboBox();
+            ThemeHelper.Apply(this);
+
         }
 
         private void LoadProductsToComboBox()

@@ -14,8 +14,11 @@ namespace UI_
         {
             _bl = bl;
             InitializeComponent();
+            ThemeHelper.Apply(this);
+
             if (suggestedId != null)
                 textBoxId.Text = suggestedId.Value.ToString();
+
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -49,6 +52,11 @@ namespace UI_
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void AddClientForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

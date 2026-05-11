@@ -52,7 +52,7 @@
             label1.Size = new Size(37, 15);
             label1.TabIndex = 0;
             label1.Text = "קופאי";
-            label1.Click += label1_Click;
+            //label1.Click += label1_Click;
             // 
             // button1
             // 
@@ -104,7 +104,7 @@
             quantityUpDown.Size = new Size(48, 23);
             quantityUpDown.TabIndex = 6;
             quantityUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            quantityUpDown.ValueChanged += quantityUpDown_ValueChanged;
+            //quantityUpDown.ValueChanged += quantityUpDown_ValueChanged;
             // 
             // addProductButton
             // 
@@ -136,7 +136,7 @@
             lblTotal.Size = new Size(160, 24);
             lblTotal.TabIndex = 9;
             lblTotal.Text = "Total: 0";
-            lblTotal.Click += lblTotal_Click;
+            //lblTotal.Click += lblTotal_Click;
             // 
             // btnDoOrder
             // 
@@ -156,7 +156,7 @@
             buttonManager.TabIndex = 11;
             buttonManager.Text = "Manager";
             buttonManager.UseVisualStyleBackColor = true;
-            buttonManager.Click += buttonManager_Click;
+            //buttonManager.Click += buttonManager_Click;
             // 
             // buttonShowSales
             // 
@@ -166,7 +166,7 @@
             buttonShowSales.TabIndex = 13;
             buttonShowSales.Text = "מבצעים";
             buttonShowSales.UseVisualStyleBackColor = true;
-            buttonShowSales.Click += buttonShowSales_Click;
+            //buttonShowSales.Click += buttonShowSales_Click;
             // 
             // panelDetails
             // 
@@ -195,7 +195,7 @@
             lblDetailUnit.Size = new Size(240, 20);
             lblDetailUnit.TabIndex = 1;
             lblDetailUnit.Text = "Unit price:";
-            lblDetailUnit.Click += lblDetailUnit_Click;
+            //lblDetailUnit.Click += lblDetailUnit_Click;
             // 
             // lblDetailQty
             // 
@@ -237,7 +237,7 @@
             panelOpen.Name = "panelOpen";
             panelOpen.Size = new Size(497, 81);
             panelOpen.TabIndex = 11;
-            panelOpen.Paint += panelOpen_Paint;
+            //panelOpen.Paint += panelOpen_Paint;
             // 
             // Cashier
             // 

@@ -5,6 +5,8 @@ namespace UI_
         public Login()
         {
             InitializeComponent();
+            ThemeHelper.Apply(this);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -17,6 +19,11 @@ namespace UI_
         {
             Cashier form3 = new Cashier();
             form3.ShowDialog();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
