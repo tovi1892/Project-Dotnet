@@ -8,6 +8,7 @@ namespace BO
         public string? Name { get; set; }
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
+        public bool IsClubMember { get; set; }
 
         public override string ToString() => this.ToStringProperty();
     }

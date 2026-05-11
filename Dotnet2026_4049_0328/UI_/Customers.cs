@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using BlApi;
+using BL.BlApi;
 
 namespace UI_
 {
@@ -51,11 +51,11 @@ namespace UI_
                 {
                     int id = int.Parse(textBox1.Text);
 
-                    bl.IClient.Create(new BO.Client
+                    bl.Customer.Create(new BO.Customer
                     {
                         Id = id,
                         Name = NameTextBox.Text,
-                        Phone = Phone.Text,
+                        PhoneNumber = Phone.Text,
                         Address = Adress.Text,
                         IsClubMember = checkBox1.Checked
                     });
@@ -94,7 +94,7 @@ namespace UI_
                 try
                 {
                     int id = int.Parse(ID.Text);
-                    var client = bl.IClient.Get(id);
+                    var client = bl.Customer.Read(id);
 
                     if (client == null)
                     {
@@ -102,7 +102,7 @@ namespace UI_
                         return;
                     }
 
-                    MessageBox.Show($"Client Details:\n\nName: {client.Name}\nPhone: {client.Phone}\nAddress: {client.Address}\nClub Member: {(client.IsClubMember ? "Yes" : "No")}");
+                    MessageBox.Show($"Client Details:\n\nName: {client.Name}\nPhone: {client.PhoneNumber}\nAddress: {client.Address}\nClub Member: {(client.IsClubMember ? "Yes" : "No")}");
                     panelID.Visible = false;
                 }
                 catch (FormatException)
@@ -131,7 +131,7 @@ namespace UI_
         {
             try
             {
-                var allClients = bl.IClient.GetAll().ToList();
+                var allClients = bl.Customer.ReadAll().ToList();
 
                 if (!allClients.Any())
                 {
@@ -188,11 +188,11 @@ namespace UI_
                 {
                     int id = int.Parse(UpID.Text);
 
-                    bl.IClient.Update(new BO.Client
+                    bl.Customer.Update(new BO.Customer
                     {
                         Id = id,
                         Name = UpName.Text,
-                        Phone = UpPhone.Text,
+                        PhoneNumber = UpPhone.Text,
                         Address = UpAdress.Text,
                         IsClubMember = checkBox2.Checked
                     });
@@ -228,7 +228,7 @@ namespace UI_
                 try
                 {
                     int id = int.Parse(IDdelete.Text);
-                    bl.IClient.Delete(id);
+                    bl.Customer.Delete(id);
                     MessageBox.Show($"Client with ID {id} deleted successfully");
                     IDdelete.Text = "";
                     panelDelete.Visible = false;
@@ -248,7 +248,7 @@ namespace UI_
         {
             try
             {
-                var allClients = bl.IClient.GetAll().ToList();
+                var allClients = bl.Customer.ReadAll().ToList();
                 string filterText = filterTextBox.Text.ToLower();
 
                 if (string.IsNullOrWhiteSpace(filterText))
@@ -283,8 +283,8 @@ namespace UI_
         {
             try
             {
-                Func<BO.Client, bool> clubMemberFilter = c => c.IsClubMember;
-                var allClients = bl.IClient.GetAll(clubMemberFilter).ToList();
+                Func<BO.Customer, bool> clubMemberFilter = c => c.IsClubMember;
+                var allClients = bl.Customer.ReadAll(clubMemberFilter).ToList();
                 var filteredClients = allClients
                     .Where(c => c.IsClubMember)
                     .ToList();

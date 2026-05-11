@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BlApi;
+using BL.BlApi;
 using BO;
 
 namespace UI_
@@ -29,13 +29,13 @@ namespace UI_
 
         private void LoadCategories()
         {
-            categoryComboBox.DataSource = Enum.GetValues(typeof(ElectricalApplianceCategory));
+            categoryComboBox.DataSource = Enum.GetValues(typeof(Categories));
             categoryComboBox.SelectedIndex = 0;
 
-            categoryComboBoxUpdate.DataSource = Enum.GetValues(typeof(ElectricalApplianceCategory));
+            categoryComboBoxUpdate.DataSource = Enum.GetValues(typeof(Categories));
             categoryComboBoxUpdate.SelectedIndex = 0;
 
-            categoryFilterComboBox.DataSource = Enum.GetValues(typeof(ElectricalApplianceCategory));
+            categoryFilterComboBox.DataSource = Enum.GetValues(typeof(Categories));
             categoryFilterComboBox.SelectedIndex = 0;
         }
 
@@ -69,12 +69,12 @@ namespace UI_
                         return;
                     }
 
-                    bl.IProduct.Create(new BO.Product
+                    bl.Product.Create(new BO.Product
                     {
                         Name = nameTextBox.Text,
-                        category = (ElectricalApplianceCategory)categoryComboBox.SelectedItem,
+                        Category = (Categories)categoryComboBox.SelectedItem,
                         Price = price,
-                        Stock = stock
+                        QuantityInStock = stock
                     });
                     MessageBox.Show("New product created successfully!");
                     panel1.Visible = false;
@@ -109,7 +109,7 @@ namespace UI_
                 try
                 {
                     int id = int.Parse(idTextBox.Text);
-                    var product = bl.IProduct.Get(id);
+                    var product = bl.Product.Read(id);
 
                     if (product == null)
                     {
@@ -117,7 +117,7 @@ namespace UI_
                         return;
                     }
 
-                    MessageBox.Show($"Product Details:\n\nName: {product.Name}\nCategory: {product.category}\nPrice: {product.Price}\nStock: {product.Stock}");
+                    MessageBox.Show($"Product Details:\n\nName: {product.Name}\nCategory: {product.Category}\nPrice: {product.Price}\nStock: {product.QuantityInStock}");
                     panelID.Visible = false;
                 }
                 catch (FormatException)
@@ -146,7 +146,7 @@ namespace UI_
         {
             try
             {
-                var allProducts = bl.IProduct.GetAll().ToList();
+                var allProducts = bl.Product.ReadAll().ToList();
 
                 if (!allProducts.Any())
                 {
@@ -206,13 +206,13 @@ namespace UI_
                         return;
                     }
 
-                    bl.IProduct.Update(new BO.Product
+                    bl.Product.Update(new BO.Product
                     {
                         Id = id,
                         Name = upNameTextBox.Text,
-                        category = (ElectricalApplianceCategory)categoryComboBoxUpdate.SelectedItem,
+                        Category = (Categories)categoryComboBoxUpdate.SelectedItem,
                         Price = price,
-                        Stock = stock
+                        QuantityInStock = stock
                     });
                     MessageBox.Show("Product updated successfully!");
                     panelUpdate.Visible = false;
@@ -240,7 +240,7 @@ namespace UI_
                 try
                 {
                     int id = int.Parse(idDeleteTextBox.Text);
-                    bl.IProduct.Delete(id);
+                    bl.Product.Delete(id);
                     MessageBox.Show($"Product with ID {id} deleted successfully");
                     idDeleteTextBox.Text = "";
                     panelDelete.Visible = false;
@@ -260,7 +260,7 @@ namespace UI_
         {
             try
             {
-                var allProducts = bl.IProduct.GetAll().ToList();
+                var allProducts = bl.Product.ReadAll().ToList();
                 string filterText = filterTextBox.Text.ToLower();
 
                 if (string.IsNullOrWhiteSpace(filterText))
@@ -291,10 +291,10 @@ namespace UI_
             try
             {
                 var selectedCategory = categoryFilterComboBox.SelectedItem;
-                if (selectedCategory is ElectricalApplianceCategory category)
+                if (selectedCategory is Categories category)
                 {
-                    Func<Product, bool> filter = p => p.category == category;
-                    var filteredProducts = bl.IProduct.GetAll(filter).ToList();
+                    Func<Product, bool> filter = p => p.Category == category;
+                    var filteredProducts = bl.Product.ReadAll(filter).ToList();
                     dataGridViewProducts.DataSource = filteredProducts;
 
                 }

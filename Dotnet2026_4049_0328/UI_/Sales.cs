@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BlApi;
+using BL.BlApi;
 using BO;
 
 namespace UI_
@@ -31,7 +31,7 @@ namespace UI_
         {
             try
             {
-                var products = bl.IProduct.GetAll().ToList();
+                var products = bl.Product.ReadAll().ToList();
                 productComboBox.DataSource = products;
                 productComboBox.DisplayMember = "Name";
                 productComboBox.ValueMember = "Id";
@@ -94,14 +94,14 @@ namespace UI_
                         return;
                     }
 
-                    bl.ISale.Create(new BO.Sale
+                    bl.Sale.Create(new BO.Sale
                     {
                         ProductId = productId,
-                        amount_to_sale = amount,
-                        cost_per_one = cost,
-                        to_club = toClub,
-                        start_date = startDate,
-                        end_date = endDate
+                        Quantity = amount,
+                        TotalPrice = cost,
+                         IsClub= toClub,
+                        SaleStartDate = startDate,
+                        SaleEndDate = endDate
                     });
                     MessageBox.Show("New sale created successfully!");
                     panel1.Visible = false;
@@ -136,7 +136,7 @@ namespace UI_
                 try
                 {
                     int id = int.Parse(idTextBox.Text);
-                    var sale = bl.ISale.Get(id);
+                    var sale = bl.Sale.Read(id);
 
                     if (sale == null)
                     {
@@ -145,9 +145,9 @@ namespace UI_
                     }
 
                     MessageBox.Show($"Sale Details:\n\nID: {sale.Id}\nProduct ID: {sale.ProductId}\n" +
-                        $"Amount: {sale.amount_to_sale}\nCost per One: {sale.cost_per_one}\n" +
-                        $"For Club Members: {(sale.to_club ? "Yes" : "No")}\n" +
-                        $"Start Date: {sale.start_date:yyyy-MM-dd}\nEnd Date: {sale.end_date:yyyy-MM-dd}");
+                        $"Amount: {sale.Quantity}\nCost per One: {sale.TotalPrice}\n" +
+                        $"For Club Members: {(sale.IsClub ? "Yes" : "No")}\n" +
+                        $"Start Date: {sale.SaleStartDate:yyyy-MM-dd}\nEnd Date: {sale.SaleEndDate:yyyy-MM-dd}");
                     panelID.Visible = false;
                 }
                 catch (FormatException)
@@ -176,7 +176,7 @@ namespace UI_
         {
             try
             {
-                var allSales = bl.ISale.GetAll().ToList();
+                var allSales = bl.Sale.ReadAll().ToList();
 
                 if (!allSales.Any())
                 {
@@ -249,15 +249,15 @@ namespace UI_
                         return;
                     }
 
-                    bl.ISale.Update(new BO.Sale
+                    bl.Sale.Update(new BO.Sale
                     {
                         Id = id,
                         ProductId = productId,
-                        amount_to_sale = amount,
-                        cost_per_one = cost,
-                        to_club = toClub,
-                        start_date = startDate,
-                        end_date = endDate
+                        Quantity = amount,
+                        TotalPrice = cost,
+                        IsClub = toClub,
+                        SaleStartDate = startDate,
+                        SaleEndDate = endDate
                     });
                     MessageBox.Show("Sale updated successfully!");
                     panelUpdate.Visible = false;
@@ -285,7 +285,7 @@ namespace UI_
                 try
                 {
                     int id = int.Parse(idDeleteTextBox.Text);
-                    bl.ISale.Delete(id);
+                    bl.Sale.Delete(id);
                     MessageBox.Show($"Sale with ID {id} deleted successfully");
                     idDeleteTextBox.Text = "";
                     panelDelete.Visible = false;
@@ -305,7 +305,7 @@ namespace UI_
         {
             try
             {
-                var allSales = bl.ISale.GetAll().ToList();
+                var allSales = bl.Sale.ReadAll().ToList();
                 string filterText = filterTextBox.Text.ToLower();
 
                 if (string.IsNullOrWhiteSpace(filterText))
@@ -335,9 +335,9 @@ namespace UI_
         {
             try
             {
-                var allSales = bl.ISale.GetAll().ToList();
+                var allSales = bl.Sale.ReadAll().ToList();
                 var filteredSales = allSales
-                    .Where(s => s.to_club)
+                    .Where(s => s.IsClub)
                     .ToList();
                 dataGridViewSales.DataSource = filteredSales;
             }
@@ -358,7 +358,7 @@ namespace UI_
                 }
 
                 int selectedProductId = (int)productFilterComboBox.SelectedValue;
-                var allSales = bl.ISale.GetAll().ToList();
+                var allSales = bl.Sale.ReadAll().ToList();
                 var filteredSales = allSales
                     .Where(s => s.ProductId == selectedProductId)
                     .ToList();

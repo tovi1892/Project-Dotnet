@@ -1,7 +1,8 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using BlApi;
+using BL.BlApi;
+using BO;
 
 namespace UI_
 {

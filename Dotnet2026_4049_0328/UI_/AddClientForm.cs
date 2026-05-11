@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using BlApi;
+using BL.BlApi;
 using BO;
 
 namespace UI_
@@ -8,7 +8,7 @@ namespace UI_
     public partial class AddClientForm : Form
     {
         private readonly IBl _bl;
-        public BO.Client? CreatedClient { get; private set; }
+        public BO.Customer? CreatedClient { get; private set; }
 
         public AddClientForm(IBl bl, int? suggestedId = null)
         {
@@ -28,10 +28,10 @@ namespace UI_
                 var address = textBoxAddress.Text.Trim();
                 var isClub = checkBoxClub.Checked;
 
-                var client = new BO.Client { Id = id, Name = name, Phone = phone, Address = address, IsClubMember = isClub };
+                var client = new BO.Customer { Id = id, Name = name, PhoneNumber = phone, Address = address, IsClubMember = isClub };
                 // create via BL
-                _bl.IClient.Create(client);
-                CreatedClient = _bl.IClient.Get(id);
+                _bl.Customer.Create(client);
+                CreatedClient = _bl.Customer.Read(id);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
